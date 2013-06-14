@@ -1,3 +1,41 @@
+<h1>Chaaaaaaaat!!!</h1>
+
+<%= form_tag(todos_path, remote: true, test: "wonder") do %>
+  <fieldset>
+    <legend>メッセージを入力してください</legend>
+    <div>
+      <%= label_tag :message, "メッセージ" %>
+      <%= text_field_tag :message, params[:message] %>
+    </div>
+    <div>
+      <%= submit_tag "送信", id: "push" %>
+    </div>
+  </fieldset>
+<% end %>
+
+<div class="chat_area"></div>
+
+<%= javascript_tag do %>
+
+$(function(){
+  ws = new WebSocket("ws://localhost:8080");
+
+  ws.onopen = function(){
+    ws.send("つながったよ");
+  }
+});
+
+
+$().bind("ajax:success", function(){
+  console.log("you");
+});
+
+$().bind("ajax:error", function(){
+  console.log("you2");
+});
+<% end %>
+
+<!--
 <h1>Listing todos</h1>
 
 <table>
@@ -27,3 +65,5 @@
 <br />
 
 <%= link_to 'New Todo', new_todo_path %>
+
+-->

@@ -1,39 +1,37 @@
 <h1>Chaaaaaaaat!!!</h1>
 
-
+<div>
+  <%= label_tag :message, "メッセージ" %>
+  <%= text_field_tag :message %>
+</div>
+<div>
+  <button id="push">butoooooon!!!</button>
+</div>
 
 
 <div class="chat_area"></div>
 
-<!--
-<h1>Listing todos</h1>
+<%= javascript_tag do %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Task</th>
-      <th>Due</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+$(function(){
+  ws = new WebSocket("ws://localhost:8080");
 
-  <tbody>
-    <% @todos.each do |todo| %>
-    <tr>
-      <td><%= todo.task %></td>
-      <td><%= todo.due %></td>
-      <td><%= link_to 'Show', todo %></td>
-      <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-      <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  ws.onopen = function(){
+    ws.send("つながったよ");
+  }
 
-<br />
+  ws.onclose = function(){
+    console.log("閉じたよ");
+  }
 
-<%= link_to 'New Todo', new_todo_path %>
+  ws.onmessage = function(str){    
+    $(".chat_area").append(str.data).append("<BR>");
+  }
 
--->
+  $("#push").click(function(e){
+    console.log("push!");
+    ws.send("you");
+  });
+});
+
+<% end %>
