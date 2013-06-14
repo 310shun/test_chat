@@ -1,23 +1,37 @@
 <h1>Chaaaaaaaat!!!</h1>
 
 <div>
-  <%= label_tag :message, "メッセージ" %>
-  <%= text_field_tag :message %>
+  group_id
+  <textarea id="group_id"></textarea>
+  <br>
+  user_name
+  <textarea id="user_name"></textarea>
+  <br>
+  <button id="start">connection start</button>
 </div>
+
+
+<div>
+  <%= label_tag :message, "メッセージ" %>
+  <textarea id="field" placeholder="Chaaaaaaaat!!!"></textarea>
+</div>
+
 <div>
   <button id="push">butoooooon!!!</button>
 </div>
-
 
 <div class="chat_area"></div>
 
 <%= javascript_tag do %>
 
-$(function(){
+$("#start").click(function(e){
   ws = new WebSocket("ws://localhost:8080");
 
   ws.onopen = function(){
-    ws.send("つながったよ");
+    var groupId = $("#group_id").val();
+    var userName = $("#user_name").val();
+    var openText = "user:"+userName+" "+groupId;
+    ws.send(openText);
   }
 
   ws.onclose = function(){
@@ -30,8 +44,13 @@ $(function(){
 
   $("#push").click(function(e){
     console.log("push!");
-    ws.send("you");
+    var text = $("#field").val();
+    ws.send(text);
   });
+});
+
+$(function(){
+
 });
 
 <% end %>
