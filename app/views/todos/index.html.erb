@@ -25,7 +25,8 @@
 <%= javascript_tag do %>
 
 $("#start").click(function(e){
-  ws = new WebSocket("ws://localhost:8080");
+  var group_id = $("#group_id").val();
+  ws = new WebSocket("ws://localhost:8080?group_id="+group_id);
 
   ws.onopen = function(){
     var groupId = $("#group_id").val();
