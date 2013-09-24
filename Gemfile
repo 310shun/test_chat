@@ -26,6 +26,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'em-websocket'
 
+gem 'puma'
+
+gem 'capistrano'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
