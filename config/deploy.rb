@@ -8,6 +8,7 @@ set :branch, "master"
 set :ssh_options, { :forward_agent => true, :port => "10022" }
 set :stage, :production
 set :user, "sato_shun"
+set :rake, "/usr/local/rbenv/shims/rake"
 # set :maintenance_basename, "maintenance"
 # set :maintenance_template_path, File.join(File.dirname(__FILE__), "templates", "maintenance.erb")
 set :use_sudo, true
