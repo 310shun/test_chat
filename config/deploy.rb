@@ -15,7 +15,7 @@ set :use_sudo, true
 set :runner, "deploy"
 set :deploy_to, "/var/www/#{application}"
 set :app_server, :puma
-set :domain, "172.30.4.62"
+set :domain, "172.30.4.62:10022"
 set :rails_env, :production
 set :puma_pid, "/tmp/puma.pid"
 set :puma_binary, "puma"
