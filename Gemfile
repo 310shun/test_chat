@@ -31,6 +31,8 @@ gem 'puma'
 gem 'capistrano'
 
 gem 'therubyracer'
+
+gem 'mysql2', '>= 0.3.12.b4'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
