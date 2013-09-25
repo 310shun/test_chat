@@ -23,3 +23,16 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  charset: utf8
+#  collation: utf8mb4_general_ci
+  reconnect: false
+  database: test_chat_production
+  pool: 5
+  password: root
+  password: root
+#  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
